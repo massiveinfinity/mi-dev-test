@@ -12,7 +12,7 @@ You also need to have a plus button to add a new info directly from the applicat
 ## How to GET and POST the data ?
 We deployed on our side the "JSON Server" from Typicode [<a href='https://github.com/typicode/json-server'>Github</a>]
 The server is up here : <a href='http://mobilesandboxdev.azurewebsites.net/'>http://mobilesandboxdev.azurewebsites.net/</a>. There is no landing page.
-You can see the database here  <a href='http://mobilesandboxdev.azurewebsites.net/db'>http://mobilesandboxdev.azurewebsites.net/db</a>
+You can see the database here  <a href='https://github.com/massiveinfinity/mi-dev-test/blob/master/database.json'>database</a>
 Check the Json Server documentation to see how to get the related informations.
 
 The application need to be easily extensible. 
