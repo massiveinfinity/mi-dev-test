@@ -11,8 +11,8 @@ You also need to add a Plus (+) button to add a new field directly from the appl
 
 ## How to GET and POST the data?
 We deployed on our side the "JSON Server" from Typicode [<a href='https://github.com/typicode/json-server'>Github</a>]
-Server access: <a href='http://mobilesandboxdev.azurewebsites.net/'>http://mobilesandboxdev.azurewebsites.net/</a>. There is no landing page.
-DataBase :  <a href='https://github.com/massiveinfinity/mi-dev-test/blob/master/database.json'>database</a>
+Server access: <a href='http://mobilesandboxdev.azurewebsites.net/'>http://mobilesandboxdev.azurewebsites.net/</a>. There is no landing page.</br />
+DataBase :  <a href='https://github.com/massiveinfinity/mi-dev-test/blob/master/database.json'>database</a><br />
 Check out the Json Server documentation to see how to get the related informations.
 
 The application needs to be easily scalable. 
