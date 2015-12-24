@@ -20,7 +20,8 @@ Check out the Json Server documentation to see how to get the related informatio
 - Use a RestFul server (GET / POST). Create the PUT and DELETE will be a plus
 - Use GIT
 - Apply User-friendly/Intuitive UI
-- Multithreading is a plus
+
+Multithreading is a plus
 
 ## How to submit your work?
 Fork this repository. This exercise should take about 2 days. However, you are not timed and you can send us a pull request whenever you are ready to show us your work.
