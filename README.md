@@ -10,12 +10,10 @@ Once you open the app, you can select a device by tapping on it, which will show
 You also need to add a Plus (+) button to add a new field directly from the application. The server is a basic restFull server, so you can easily POST new info. 
 
 ## How to GET and POST the data?
-We deployed on our side the "JSON Server" from Typicode [<a href='https://github.com/typicode/json-server'>Github</a>]
+We deployed on our side the "JSON Server" from Typicode [<a href='https://github.com/typicode/json-server'>Github</a>]</br />
 Server access: <a href='http://mobilesandboxdev.azurewebsites.net/'>http://mobilesandboxdev.azurewebsites.net/</a>. There is no landing page.</br />
 DataBase :  <a href='https://github.com/massiveinfinity/mi-dev-test/blob/master/database.json'>database</a><br />
 Check out the Json Server documentation to see how to get the related informations.
-
-The application needs to be easily scalable. 
 
 ## We want to know if you can 
 - Create an scalable app
