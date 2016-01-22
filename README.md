@@ -2,7 +2,7 @@
 
 You have just been hired as a mobile developer in a new company.
 
-On your first day, the CTO wants you to spend some time on a project.
+On your first day, our CTO wants you to spend some time on a project.
 The objective is very simple: you need to create a showcase application that can download and parse AT THE SAME TIME the history of the versions of Android and some device informations. Creating a database and storing the data is a plus. Once the download is finished, you need to display both information in a listview on the main screen. 
 
 Once you open the app, you can select a device by tapping on it, which will show the related android version information (name, version code).
