@@ -5,14 +5,19 @@ import android.os.Handler;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
-import com.janibanez.server.http.response.DbResponse;
+import com.janibanez.server.models.Db;
+import com.janibanez.server.models.Device;
+import com.janibanez.server.models.ServerModel;
+import com.janibanez.server.models.Version;
 
 import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
@@ -23,10 +28,14 @@ public class MiApi {
     private static final String API_URL = "http://mobilesandboxdev.azurewebsites.net";
 
     private static final String DB = "/db";
+    private static final String DEVICES = "/devices";
+    private static final String VERSIONS = "/android";
     private static final String DEVICE_RESOURCE = "/devices/%s";
     private static final String VERSION_RESOURCE = "/android/%s";
 
     public enum Action {
+        CreateDevice,
+        CreateVersion,
         GetDb,
         DeleteDevice,
         DeleteVersion
@@ -44,8 +53,14 @@ public class MiApi {
         mHandler = new Handler();
     }
 
-    public void call(Action action, int id, ICallback callback) {
+    public void call(Action action, int id, ServerModel model, ICallback callback) {
         switch (action) {
+            case CreateDevice:
+                createDevice((Device) model, callback);
+                break;
+            case CreateVersion:
+                createVersion((Version) model, callback);
+                break;
             case GetDb:
                 getDb(callback);
                 break;
@@ -58,7 +73,85 @@ public class MiApi {
         }
     }
 
-    private void getDb(final ICallback<DbResponse> callback) {
+    private void createDevice(Device device, final ICallback<Device> callback) {
+
+        RequestBody requestBody = new FormBody.Builder()
+                .add("name", device.name)
+                .add("androidId", String.valueOf(device.androidId))
+                .add("carrier", device.carrier)
+                .add("imageUrl", device.imageUrl)
+                .add("snippet", device.snippet)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(TextUtils.concat(API_URL, DEVICES).toString())
+                .post(requestBody)
+                .build();
+
+        Call call = mClient.newCall(request);
+
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                if (callback != null) {
+                    callback.onFailure(e);
+                }
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (callback != null) {
+                    if (response.isSuccessful()) {
+                        Device result = mGson.fromJson(response.body().string(), Device.class);
+                        callback.onResponse(result);
+                    } else {
+                        callback.onFailure(new Exception("Response is unsuccessful."));
+                    }
+                }
+            }
+        });
+    }
+
+    private void createVersion(Version version, final ICallback<Version> callback) {
+
+        RequestBody requestBody = new FormBody.Builder()
+                .add("name", version.name)
+                .add("codename", version.codename)
+                .add("version", version.version)
+                .add("target", version.target)
+                .add("distribution", version.distribution)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(TextUtils.concat(API_URL, VERSIONS).toString())
+                .post(requestBody)
+                .build();
+
+        Call call = mClient.newCall(request);
+
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                if (callback != null) {
+                    callback.onFailure(e);
+                }
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (callback != null) {
+                    if (response.isSuccessful()) {
+                        Version result = mGson.fromJson(response.body().string(), Version.class);
+                        callback.onResponse(result);
+                    } else {
+                        callback.onFailure(new Exception("Response is unsuccessful."));
+                    }
+                }
+            }
+        });
+    }
+
+    private void getDb(final ICallback<Db> callback) {
 
         Request request = new Request.Builder()
                 .url(TextUtils.concat(API_URL, DB).toString())
@@ -78,8 +171,8 @@ public class MiApi {
             public void onResponse(Call call, Response response) throws IOException {
                 if (callback != null) {
                     if (response.isSuccessful()) {
-                        DbResponse dbResponse = mGson.fromJson(response.body().string(), DbResponse.class);
-                        callback.onResponse(dbResponse);
+                        Db db = mGson.fromJson(response.body().string(), Db.class);
+                        callback.onResponse(db);
                     } else {
                         callback.onFailure(new Exception("Response is unsuccessful."));
                     }

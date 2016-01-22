@@ -114,7 +114,7 @@ public class DeviceDisplayActivity extends AppCompatActivity {
     private void deleteDevice() {
         MiApi api = new MiApi(this);
 
-        api.call(MiApi.Action.DeleteDevice, mData.id, new ICallback() {
+        api.call(MiApi.Action.DeleteDevice, mData.id, null, new ICallback() {
             @Override
             public void onFailure(Throwable throwable) {
                 runOnUiThread(new Runnable() {

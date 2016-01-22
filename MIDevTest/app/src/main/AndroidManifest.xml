@@ -24,8 +24,12 @@
         <activity
             android:name=".DeviceDisplayActivity"
             android:label="@string/text_device" />
+        <activity android:name=".DeviceEditActivity"
+            android:label="@string/text_device" />
         <activity
             android:name=".VersionDisplayActivity"
+            android:label="@string/text_version" />
+        <activity android:name=".VersionEditActivity"
             android:label="@string/text_version" />
     </application>
 

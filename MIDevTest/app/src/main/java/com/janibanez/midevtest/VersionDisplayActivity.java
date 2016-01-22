@@ -99,7 +99,7 @@ public class VersionDisplayActivity extends AppCompatActivity {
     private void deleteVersion() {
         MiApi api = new MiApi(this);
 
-        api.call(MiApi.Action.DeleteVersion, mData.id, new ICallback() {
+        api.call(MiApi.Action.DeleteVersion, mData.id, null, new ICallback() {
             @Override
             public void onFailure(Throwable throwable) {
                 runOnUiThread(new Runnable() {

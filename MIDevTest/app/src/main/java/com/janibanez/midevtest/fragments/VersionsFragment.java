@@ -13,7 +13,7 @@ import com.janibanez.midevtest.MainActivity;
 import com.janibanez.midevtest.R;
 import com.janibanez.midevtest.VersionDisplayActivity;
 import com.janibanez.midevtest.adapters.VersionsListAdapter;
-import com.janibanez.server.http.response.DbResponse;
+import com.janibanez.server.models.Db;
 import com.janibanez.server.models.Version;
 
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class VersionsFragment extends Fragment implements MainActivity.MainUpdat
     }
 
     @Override
-    public void onUpdate(DbResponse response) {
+    public void onUpdate(Db response) {
         if (response != null) {
             mAdapter.clear();
             mAdapter.addAll(response.android);

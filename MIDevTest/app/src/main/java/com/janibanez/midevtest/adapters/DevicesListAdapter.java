@@ -3,7 +3,6 @@ package com.janibanez.midevtest.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.Environment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +19,6 @@ import com.janibanez.midevtest.models.ViewHolder;
 import com.janibanez.midevtest.utilities.ImageCache;
 import com.janibanez.server.models.Device;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 

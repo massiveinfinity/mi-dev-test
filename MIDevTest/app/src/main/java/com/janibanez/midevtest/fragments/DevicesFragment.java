@@ -12,9 +12,8 @@ import android.widget.ListView;
 import com.janibanez.midevtest.DeviceDisplayActivity;
 import com.janibanez.midevtest.MainActivity;
 import com.janibanez.midevtest.R;
-import com.janibanez.midevtest.VersionDisplayActivity;
 import com.janibanez.midevtest.adapters.DevicesListAdapter;
-import com.janibanez.server.http.response.DbResponse;
+import com.janibanez.server.models.Db;
 import com.janibanez.server.models.Device;
 
 import java.util.ArrayList;
@@ -56,7 +55,7 @@ public class DevicesFragment extends Fragment implements MainActivity.MainUpdate
     }
 
     @Override
-    public void onUpdate(DbResponse response) {
+    public void onUpdate(Db response) {
         if (response != null) {
             mAdapter.clear();
             mAdapter.addAll(response.devices);

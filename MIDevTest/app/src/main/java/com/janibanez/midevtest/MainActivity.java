@@ -15,7 +15,7 @@ import com.janibanez.midevtest.fragments.DevicesFragment;
 import com.janibanez.midevtest.fragments.VersionsFragment;
 import com.janibanez.server.ICallback;
 import com.janibanez.server.MiApi;
-import com.janibanez.server.http.response.DbResponse;
+import com.janibanez.server.models.Db;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,18 +26,21 @@ public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_DISPLAY_DEVICE = 100;
     public static final int REQUEST_DISPLAY_VERSION = 101;
 
-    public static final int RESULT_REFRESH = 200;
+    public static final int REQUEST_EDIT_DEVICE = 200;
+    public static final int REQUEST_EDIT_VERSION = 201;
+
+    public static final int RESULT_REFRESH = 300;
 
     MainPagerAdapter mPagerAdapter;
     ProgressDialog mProgessDialog;
     TabLayout mTabLayout;
     ViewPager mViewPager;
 
-    DbResponse mData;
+    Db mData;
     List<MainUpdateListener> mUpdateListeners = new ArrayList<>();
 
     public interface MainUpdateListener {
-        void onUpdate(DbResponse response);
+        void onUpdate(Db response);
     }
 
     @Override
@@ -73,13 +76,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // TODO: implement add of device and version
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.action_add_device:
-                Toast.makeText(this, "Add Device", Toast.LENGTH_LONG).show();
+                intent = new Intent(this, DeviceEditActivity.class);
+                startActivityForResult(intent, REQUEST_EDIT_DEVICE);
                 break;
             case R.id.action_add_version:
-                Toast.makeText(this, "Add Version", Toast.LENGTH_LONG).show();
+                intent = new Intent(this, VersionEditActivity.class);
+                startActivityForResult(intent, REQUEST_EDIT_VERSION);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -90,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case REQUEST_DISPLAY_DEVICE:
             case REQUEST_DISPLAY_VERSION:
+            case REQUEST_EDIT_DEVICE:
+            case REQUEST_EDIT_VERSION:
                 if (resultCode == RESULT_REFRESH) {
                     getData();
                 }
@@ -103,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         mProgessDialog.show();
 
         MiApi api = new MiApi(this);
-        api.call(MiApi.Action.GetDb, 0, new ICallback<DbResponse>() {
+        api.call(MiApi.Action.GetDb, 0, null, new ICallback<Db>() {
             @Override
             public void onFailure(final Throwable throwable) {
                 // need to run updates on UI thread
@@ -120,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onResponse(final DbResponse response) throws IOException {
+            public void onResponse(final Db response) throws IOException {
                 // need to run updates on UI thread
                 runOnUiThread(new Runnable() {
                     @Override
