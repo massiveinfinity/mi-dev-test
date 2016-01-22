@@ -1,9 +1,8 @@
 package com.janibanez.midevtest.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Environment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -14,13 +13,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.janibanez.midevtest.MainApplication;
 import com.janibanez.midevtest.R;
+import com.janibanez.midevtest.asynctasks.GetBitmapAsyncTask;
+import com.janibanez.midevtest.models.ViewHolder;
 import com.janibanez.midevtest.utilities.ImageCache;
 import com.janibanez.server.models.Device;
 
 import java.io.File;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class DevicesListAdapter extends ArrayAdapter<Device> {
     ImageCache mImageCache;
 
     // use view holder pattern
-    public static class ViewHolder {
+    public static class DeviceViewHolder extends ViewHolder {
         TextView name, snippet;
         ProgressBar progress;
         ImageView image;
@@ -44,9 +44,8 @@ public class DevicesListAdapter extends ArrayAdapter<Device> {
         super(context, R.layout.list_item_device, list);
         mData = list;
 
-        // implement image caching, using 20% of max runtime memory
-        ImageCache.ImageCacheParams params = new ImageCache.ImageCacheParams(context, 0.2f, getFileDirectory() + "/cache");
-        mImageCache = new ImageCache(params);
+        MainApplication application = (MainApplication) ((Activity) context).getApplication();
+        mImageCache = application.getImageCache();
     }
 
     @Override
@@ -54,12 +53,12 @@ public class DevicesListAdapter extends ArrayAdapter<Device> {
 
         Device data = mData.get(position);
 
-        ViewHolder holder;
+        DeviceViewHolder holder;
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_device, parent, false);
 
-            holder = new ViewHolder();
+            holder = new DeviceViewHolder();
 
             holder.name = (TextView) convertView.findViewById(R.id.name);
             holder.snippet = (TextView) convertView.findViewById(R.id.snippet);
@@ -68,7 +67,7 @@ public class DevicesListAdapter extends ArrayAdapter<Device> {
 
             convertView.setTag(holder);
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            holder = (DeviceViewHolder) convertView.getTag();
         }
 
         holder.name.setText(data.name);
@@ -88,16 +87,18 @@ public class DevicesListAdapter extends ArrayAdapter<Device> {
                 // try to fetch image, and cache it
                 holder.image.setVisibility(View.INVISIBLE);
                 holder.progress.setVisibility(View.VISIBLE);
-                GetBitmap task = new GetBitmap(holder.photoUrl, holder, new GetBitmapCallback() {
+                GetBitmapAsyncTask task = new GetBitmapAsyncTask(holder.photoUrl, holder, new GetBitmapAsyncTask.GetBitmapCallback() {
                     @Override
                     public void onSuccess(String url, ViewHolder holder, Bitmap bitmap) {
                         mImageCache.addBitmapToMemCache(url, bitmap);
 
+                        DeviceViewHolder deviceViewHolder = (DeviceViewHolder) holder;
+
                         // only apply bitmap to correct view
-                        if (TextUtils.equals(url, holder.photoUrl)) {
-                            holder.image.setImageBitmap(bitmap);
-                            holder.image.setVisibility(View.VISIBLE);
-                            holder.progress.setVisibility(View.INVISIBLE);
+                        if (TextUtils.equals(url, deviceViewHolder.photoUrl)) {
+                            deviceViewHolder.image.setImageBitmap(bitmap);
+                            deviceViewHolder.image.setVisibility(View.VISIBLE);
+                            deviceViewHolder.progress.setVisibility(View.INVISIBLE);
                         }
                     }
                 });
@@ -112,49 +113,4 @@ public class DevicesListAdapter extends ArrayAdapter<Device> {
         return convertView;
     }
 
-    private static File getFileDirectory() {
-        File directory = new File(Environment.getExternalStorageDirectory(), "SpotifyChartsFiles");
-        if (!directory.exists()) {
-            directory.mkdirs();
-        }
-        return directory;
-    }
-
-    private interface GetBitmapCallback {
-        void onSuccess(String url, ViewHolder holder, Bitmap bitmap);
-    }
-
-    private static class GetBitmap extends AsyncTask<Void, Void, Bitmap> {
-
-        private String url;
-        private ViewHolder holder;
-        private GetBitmapCallback callback;
-
-        public GetBitmap(String url, ViewHolder holder, GetBitmapCallback callback) {
-            this.url = url;
-            this.holder = holder;
-            this.callback = callback;
-        }
-
-        @Override
-        protected Bitmap doInBackground(Void... params) {
-            Bitmap bitmap = null;
-
-            try {
-                InputStream is = (InputStream) new URL(url).getContent();
-                bitmap = BitmapFactory.decodeStream(is);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return bitmap;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            if (callback != null) {
-                callback.onSuccess(url, holder, bitmap);
-            }
-        }
-    }
 }

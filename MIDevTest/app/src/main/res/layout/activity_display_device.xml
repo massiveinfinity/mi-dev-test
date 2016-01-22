@@ -5,8 +5,28 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/li_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_vertical_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,10 +62,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="VERSION"/>
+                android:text="ANDROID ID"/>
 
             <TextView
-                android:id="@+id/version"
+                android:id="@+id/android_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="n/a"/>
@@ -64,10 +84,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CODENAME"/>
+                android:text="SNIPPET"/>
 
             <TextView
-                android:id="@+id/codename"
+                android:id="@+id/snippet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="n/a"/>
@@ -86,32 +106,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TARGET"/>
+                android:text="CARRIER"/>
 
             <TextView
-                android:id="@+id/target"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="n/a"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_vertical_margin"
-            android:paddingTop="@dimen/activity_horizontal_margin"
-            android:paddingBottom="@dimen/activity_horizontal_margin">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="DISTRIBUTION"/>
-
-            <TextView
-                android:id="@+id/distribution"
+                android:id="@+id/carrier"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="n/a"/>
@@ -121,3 +119,5 @@
     </LinearLayout>
 
 </ScrollView>
+
+

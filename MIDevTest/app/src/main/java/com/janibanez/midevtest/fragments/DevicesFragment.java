@@ -1,14 +1,18 @@
 package com.janibanez.midevtest.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.janibanez.midevtest.DeviceDisplayActivity;
 import com.janibanez.midevtest.MainActivity;
 import com.janibanez.midevtest.R;
+import com.janibanez.midevtest.VersionDisplayActivity;
 import com.janibanez.midevtest.adapters.DevicesListAdapter;
 import com.janibanez.server.http.response.DbResponse;
 import com.janibanez.server.models.Device;
@@ -18,7 +22,7 @@ import java.util.ArrayList;
 /**
  * Created by jwgibanez on 21/01/2016.
  */
-public class DevicesFragment extends Fragment implements MainActivity.MainUpdateListener {
+public class DevicesFragment extends Fragment implements MainActivity.MainUpdateListener, AdapterView.OnItemClickListener {
 
     MainActivity mActivity;
     ListView mList;
@@ -40,6 +44,7 @@ public class DevicesFragment extends Fragment implements MainActivity.MainUpdate
 
         mList = (ListView) rootView.findViewById(R.id.list);
         mList.setAdapter(mAdapter);
+        mList.setOnItemClickListener(this);
 
         return rootView;
     }
@@ -57,5 +62,12 @@ public class DevicesFragment extends Fragment implements MainActivity.MainUpdate
             mAdapter.addAll(response.devices);
             mAdapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(mActivity, DeviceDisplayActivity.class);
+        intent.putExtra("device", mAdapter.getItem(position));
+        mActivity.startActivity(intent);
     }
 }
