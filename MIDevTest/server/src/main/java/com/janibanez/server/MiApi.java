@@ -22,10 +22,14 @@ public class MiApi {
 
     private static final String API_URL = "http://mobilesandboxdev.azurewebsites.net";
 
-    private static final String GET_DB = "/db";
+    private static final String DB = "/db";
+    private static final String DEVICE_RESOURCE = "/devices/%s";
+    private static final String VERSION_RESOURCE = "/android/%s";
 
     public enum Action {
-        GetDb
+        GetDb,
+        DeleteDevice,
+        DeleteVersion
     }
 
     Context mContext;
@@ -40,10 +44,16 @@ public class MiApi {
         mHandler = new Handler();
     }
 
-    public void call(Action action, ICallback callback) {
+    public void call(Action action, int id, ICallback callback) {
         switch (action) {
             case GetDb:
                 getDb(callback);
+                break;
+            case DeleteDevice:
+                deleteDevice(id, callback);
+                break;
+            case DeleteVersion:
+                deleteVersion(id, callback);
                 break;
         }
     }
@@ -51,7 +61,7 @@ public class MiApi {
     private void getDb(final ICallback<DbResponse> callback) {
 
         Request request = new Request.Builder()
-                .url(TextUtils.concat(API_URL, GET_DB).toString())
+                .url(TextUtils.concat(API_URL, DB).toString())
                 .build();
 
         Call call = mClient.newCall(request);
@@ -70,6 +80,66 @@ public class MiApi {
                     if (response.isSuccessful()) {
                         DbResponse dbResponse = mGson.fromJson(response.body().string(), DbResponse.class);
                         callback.onResponse(dbResponse);
+                    } else {
+                        callback.onFailure(new Exception("Response is unsuccessful."));
+                    }
+                }
+            }
+        });
+    }
+
+    private void deleteDevice(int id, final ICallback callback) {
+
+        Request request = new Request.Builder()
+                .url(TextUtils.concat(API_URL, String.format(DEVICE_RESOURCE, id)).toString())
+                .delete()
+                .build();
+
+        Call call = mClient.newCall(request);
+
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                if (callback != null) {
+                    callback.onFailure(e);
+                }
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (callback != null) {
+                    if (response.isSuccessful()) {
+                        callback.onResponse(null);
+                    } else {
+                        callback.onFailure(new Exception("Response is unsuccessful."));
+                    }
+                }
+            }
+        });
+    }
+
+    private void deleteVersion(int id, final ICallback callback) {
+
+        Request request = new Request.Builder()
+                .url(TextUtils.concat(API_URL, String.format(VERSION_RESOURCE, id)).toString())
+                .delete()
+                .build();
+
+        Call call = mClient.newCall(request);
+
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                if (callback != null) {
+                    callback.onFailure(e);
+                }
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (callback != null) {
+                    if (response.isSuccessful()) {
+                        callback.onResponse(null);
                     } else {
                         callback.onFailure(new Exception("Response is unsuccessful."));
                     }

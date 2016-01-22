@@ -68,6 +68,6 @@ public class DevicesFragment extends Fragment implements MainActivity.MainUpdate
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(mActivity, DeviceDisplayActivity.class);
         intent.putExtra("device", mAdapter.getItem(position));
-        mActivity.startActivity(intent);
+        mActivity.startActivityForResult(intent, MainActivity.REQUEST_DISPLAY_DEVICE);
     }
 }

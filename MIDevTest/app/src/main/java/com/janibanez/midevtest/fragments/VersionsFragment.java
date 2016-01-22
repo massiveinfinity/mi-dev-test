@@ -67,8 +67,7 @@ public class VersionsFragment extends Fragment implements MainActivity.MainUpdat
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(mActivity, VersionDisplayActivity.class);
         intent.putExtra("version", mAdapter.getItem(position));
-        mActivity.startActivity(intent);
+        mActivity.startActivityForResult(intent, MainActivity.REQUEST_DISPLAY_VERSION);
     }
-
 
 }

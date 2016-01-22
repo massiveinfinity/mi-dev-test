@@ -1,6 +1,7 @@
 package com.janibanez.midevtest;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -21,6 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final int REQUEST_DISPLAY_DEVICE = 100;
+    public static final int REQUEST_DISPLAY_VERSION = 101;
+
+    public static final int RESULT_REFRESH = 200;
 
     MainPagerAdapter mPagerAdapter;
     ProgressDialog mProgessDialog;
@@ -79,12 +85,25 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case REQUEST_DISPLAY_DEVICE:
+            case REQUEST_DISPLAY_VERSION:
+                if (resultCode == RESULT_REFRESH) {
+                    getData();
+                }
+                break;
+        }
+
+    }
+
     private void getData() {
 
         mProgessDialog.show();
 
         MiApi api = new MiApi(this);
-        api.call(MiApi.Action.GetDb, new ICallback<DbResponse>() {
+        api.call(MiApi.Action.GetDb, 0, new ICallback<DbResponse>() {
             @Override
             public void onFailure(final Throwable throwable) {
                 // need to run updates on UI thread
