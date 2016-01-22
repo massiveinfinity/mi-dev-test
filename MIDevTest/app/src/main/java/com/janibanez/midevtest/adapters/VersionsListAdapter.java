@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.janibanez.midevtest.R;
@@ -21,6 +23,11 @@ public class VersionsListAdapter extends ArrayAdapter<Version> {
 
     List<Version> mData;
 
+    // use view holder pattern
+    public static class ViewHolder {
+        TextView name, codename, version;
+    }
+
     public VersionsListAdapter(Context context, ArrayList<Version> list) {
         super(context, R.layout.list_item_version, list);
         mData = list;
@@ -31,23 +38,25 @@ public class VersionsListAdapter extends ArrayAdapter<Version> {
 
         Version data = mData.get(position);
 
+        ViewHolder holder;
+
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_version, parent, false);
+
+            holder = new ViewHolder();
+
+            holder.name = (TextView) convertView.findViewById(R.id.name);
+            holder.version = (TextView) convertView.findViewById(R.id.version);
+            holder.codename = (TextView) convertView.findViewById(R.id.codename);
+
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
 
-        TextView id = (TextView) convertView.findViewById(R.id.id);
-        TextView name = (TextView) convertView.findViewById(R.id.name);
-        TextView version = (TextView) convertView.findViewById(R.id.version);
-        TextView codename = (TextView) convertView.findViewById(R.id.codename);
-        TextView target = (TextView) convertView.findViewById(R.id.target);
-        TextView distribution = (TextView) convertView.findViewById(R.id.distribution);
-
-        id.setText(TextUtils.concat("ID: ", String.valueOf(data.id)));
-        name.setText(TextUtils.concat("Name: ", data.name));
-        version.setText(TextUtils.concat("Version: ", data.version));
-        codename.setText(TextUtils.concat("Codename: ", data.codename));
-        target.setText(TextUtils.concat("Target: ", data.target));
-        distribution.setText(TextUtils.concat("Distribution: ", data.distribution));
+        holder.name.setText(TextUtils.concat("Name: ", data.name));
+        holder.version.setText(TextUtils.concat("Version: ", data.version));
+        holder.codename.setText(TextUtils.concat("Codename: ", data.codename));
 
         return convertView;
     }

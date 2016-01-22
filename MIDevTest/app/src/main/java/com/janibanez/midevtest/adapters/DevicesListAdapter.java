@@ -34,8 +34,7 @@ public class DevicesListAdapter extends ArrayAdapter<Device> {
 
     // use view holder pattern
     public static class ViewHolder {
-        TextView name;
-        TextView snippet;
+        TextView name, snippet;
         ProgressBar progress;
         ImageView image;
         String photoUrl;
