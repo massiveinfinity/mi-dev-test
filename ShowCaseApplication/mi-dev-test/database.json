@@ -1,0 +1,249 @@
+{
+  "android": [
+    {
+      "id": 1,
+      "name": "Android beta",
+      "version": "0",
+      "codename": "beta",
+      "target": "0",
+      "distribution": "0.0%"
+    },
+    {
+      "id": 2,
+      "name": "Android 1.0",
+      "version": "1.0",
+      "codename": "",
+      "target": "1",
+      "distribution": "0.0%"
+    },
+    {
+      "id": 3,
+      "name": "Android 1.1",
+      "version": "1.1",
+      "codename": "",
+      "target": "2",
+      "distribution": "0.0%"
+    },
+    {
+      "id": 4,
+      "name": "Android 1.5 Cupcake",
+      "version": "1.5",
+      "codename": "Cupcake",
+      "target": "3",
+      "distribution": "0.2%"
+    },
+    {
+      "id": 5,
+      "name": "Android 1.6 Donut",
+      "version": "1.6",
+      "codename": "Donut",
+      "target": "4",
+      "distribution": "0.4%"
+    },
+    {
+      "id": 6,
+      "name": "Android 2.1 Eclair",
+      "version": "2.1",
+      "codename": "Eclair",
+      "target": "7",
+      "distribution": "3.7%"
+    },
+    {
+      "id": 7,
+      "name": "Android 2.2.x Froyo",
+      "version": "2.2.x",
+      "codename": "Froyo",
+      "target": "8",
+      "distribution": "14%"
+    },
+    {
+      "id": 8,
+      "name": "Android 2.3 - 2.3.2 Gingerbread",
+      "version": "2.3.x",
+      "codename": "Gingerbread",
+      "target": "9",
+      "distribution": "0.3%"
+    },
+    {
+      "id": 9,
+      "name": "Android 2.3.3 - 2.3.7 Gingerbread",
+      "version": "2.3.x",
+      "codename": "Gingerbread",
+      "target": "10",
+      "distribution": "57.2%"
+    },
+    {
+      "id": 10,
+      "name": "Android 3.1 Honeycomb",
+      "version": "3.1",
+      "codename": "Honeycomb",
+      "target": "12",
+      "distribution": "0.5%"
+    },
+    {
+      "id": 11,
+      "name": "Android 3.2 Honeycomb",
+      "version": "3.2",
+      "codename": "Honeycomb",
+      "target": "13",
+      "distribution": "1.6%"
+    },
+    {
+      "id": 12,
+      "name": "Android 4.0 - 4.0.2 Ice Cream Sandwich",
+      "version": "4.0.x",
+      "codename": "Ice Cream Sandwich",
+      "target": "14",
+      "distribution": "0.1%"
+    },
+    {
+      "id": 13,
+      "name": "Android 4.0.3 - 4.0.4 Ice Cream Sandwich",
+      "version": "4.0.x",
+      "codename": "Ice Cream Sandwich",
+      "target": "15",
+      "distribution": "20.8%"
+    },
+    {
+      "id": 14,
+      "name": "Android 4.1 Jelly Bean",
+      "version": "4.1.x",
+      "codename": "Jelly Bean",
+      "target": "16",
+      "distribution": "1.2%"
+    }
+  ],
+  "devices": [
+    {
+      "id": 1,
+      "androidId": 5,
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/motorola-xoom.0.jpg",
+      "name": "MOTOROLA XOOM™",
+      "snippet": "The Next, Next Generation\n\nExperience the future with MOTOROLA XOOM, the world's first tablet powered by Android 3.0 (Honeycomb)."
+    },
+    {
+      "id": 2,
+      "androidId": 10,
+      "carrier": "AT&amp;T",
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/motorola-atrix-4g.0.jpg",
+      "name": "MOTOROLA ATRIX™ 4G",
+      "snippet": "MOTOROLA ATRIX 4G the world's most powerful smartphone."
+    },
+    {
+      "id": 5,
+      "androidId": 11,
+      "carrier": "Dell",
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/dell-venue.0.jpg",
+      "name": "Dell Venue",
+      "snippet": "The Dell Venue; Your Personal Express Lane to Everything"
+    },
+    {
+      "id": 6,
+      "androidId": 12,
+      "carrier": "Best Buy",
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/nexus-s.0.jpg",
+      "name": "Nexus S",
+      "snippet": "Fast just got faster with Nexus S. A pure Google experience, Nexus S is the first phone to run Gingerbread (Android 2.3), the fastest version of Android yet."
+    },
+    {
+      "id": 7,
+      "androidId": 8,
+      "carrier": "Cellular South",
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/lg-axis.0.jpg",
+      "name": "LG Axis",
+      "snippet": "Android Powered, Google Maps Navigation, 5 Customizable Home Screens"
+    },
+    {
+      "id": 8,
+      "androidId": 6,
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/samsung-galaxy-tab.0.jpg",
+      "name": "Samsung Galaxy Tab™",
+      "snippet": "Feel Free to Tab™. The Samsung Galaxy Tab™ brings you an ultra-mobile entertainment experience through its 7” display, high-power processor and Adobe® Flash® Player compatibility."
+    },
+    {
+      "id": 9,
+      "androidId": 8,
+      "carrier": "Cellular South",
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/samsung-showcase-a-galaxy-s-phone.0.jpg",
+      "name": "Samsung Showcase™ a Galaxy S™ phone",
+      "snippet": "The Samsung Showcase™ delivers a cinema quality experience like you’ve never seen before. Its innovative 4” touch display technology provides rich picture brilliance, even outdoors"
+    },
+    {
+      "id": 10,
+      "androidId": 8,
+      "carrier": "Verizon",
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/droid-2-global-by-motorola.0.jpg",
+      "name": "DROID™ 2 Global by Motorola",
+      "snippet": "The first smartphone with a 1.2 GHz processor and global capabilities."
+    },
+    {
+      "id": 11,
+      "androidId": 8,
+      "carrier": "Verizon",
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/droid-pro-by-motorola.0.jpg",
+      "name": "DROID™ Pro by Motorola",
+      "snippet": "The next generation of DOES."
+    },
+    {
+      "id": 12,
+      "androidId": 8,
+      "carrier": "AT&amp;T",
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/motorola-bravo-with-motoblur.0.jpg",
+      "name": "MOTOROLA BRAVO™ with MOTOBLUR™",
+      "snippet": "An experience to cheer about."
+    },
+    {
+      "id": 13,
+      "androidId": 8,
+      "carrier": "T-Mobile",
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/motorola-defy-with-motoblur.0.jpg",
+      "name": "Motorola DEFY™ with MOTOBLUR™",
+      "snippet": "Are you ready for everything life throws your way?"
+    },
+    {
+      "id": 14,
+      "androidId": 11,
+      "carrier": "T-Mobile",
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/t-mobile-mytouch-4g.0.jpg",
+      "name": "T-Mobile myTouch 4G",
+      "snippet": "The T-Mobile myTouch 4G is a premium smartphone designed to deliver blazing fast 4G speeds so that you can video chat from practically anywhere, with or without Wi-Fi."
+    },
+    {
+      "id": 15,
+      "androidId": 11,
+      "carrier": "US Cellular",
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/samsung-mesmerize-a-galaxy-s-phone.0.jpg",
+      "name": "Samsung Mesmerize™ a Galaxy S™ phone",
+      "snippet": "The Samsung Mesmerize™ delivers a cinema quality experience like you’ve never seen before. Its innovative 4” touch display technology provides rich picture brilliance,even outdoors"
+    },
+    {
+      "id": 16,
+      "androidId": 11,
+      "carrier": "Sprint",
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/sanyo-zio.0.jpg",
+      "name": "SANYO ZIO",
+      "snippet": "The Sanyo Zio by Kyocera is an Android smartphone with a combination of ultra-sleek styling, strong performance and unprecedented value."
+    },
+    {
+      "id": 17,
+      "androidId": 11,
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/samsung-transform.0.jpg",
+      "name": "Samsung Transform™",
+      "snippet": "The Samsung Transform™ brings you a fun way to customize your Android powered touch screen phone to just the way you like it through your favorite themed “Sprint ID Service Pack”."
+    },
+    {
+      "id": 18,
+      "androidId": 11,
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/t-mobile-g2.0.jpg",
+      "name": "T-Mobile G2",
+      "snippet": "The T-Mobile G2 with Google is the first smartphone built for 4G speeds on T-Mobile's new network. Get the information you need, faster than you ever thought possible."
+    },
+    {
+      "id": 19,
+      "androidId": 11,
+      "imageUrl": "https://raw.githubusercontent.com/IgorMinar/angular-phonecat-tutorial/master/app/img/phones/motorola-charm-with-motoblur.0.jpg",
+      "name": "Motorola CHARM™ with MOTOBLUR™",
+      "snippet": "Motorola CHARM fits easily in your pocket or palm.  Includes MOTOBLUR service."
+    }
+  ]
+}
