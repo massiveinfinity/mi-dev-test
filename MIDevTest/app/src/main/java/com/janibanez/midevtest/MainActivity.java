@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.janibanez.midevtest.adapters.MainPagerAdapter;
 import com.janibanez.midevtest.fragments.DevicesFragment;
@@ -66,13 +67,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        //if (id == R.id.action_settings) {
-        //    return true;
-        //}
-
+        // TODO: implement add of device and version
+        switch (item.getItemId()) {
+            case R.id.action_add_device:
+                Toast.makeText(this, "Add Device", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.action_add_version:
+                Toast.makeText(this, "Add Version", Toast.LENGTH_LONG).show();
+                break;
+        }
         return super.onOptionsItemSelected(item);
     }
 
