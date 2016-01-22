@@ -3,8 +3,8 @@ package com.janibanez.midevtest;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends AppCompatActivity {
 
     MainPagerAdapter mPagerAdapter;
     ProgressDialog mProgessDialog;
@@ -40,8 +40,8 @@ public class MainActivity extends FragmentActivity {
 
         mPagerAdapter = new MainPagerAdapter(this, getSupportFragmentManager());
 
-        mPagerAdapter.add(new MainPagerAdapter.FragmentInfo("Versions", VersionsFragment.class.getName()));
         mPagerAdapter.add(new MainPagerAdapter.FragmentInfo("Devices", DevicesFragment.class.getName()));
+        mPagerAdapter.add(new MainPagerAdapter.FragmentInfo("Versions", VersionsFragment.class.getName()));
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mPagerAdapter);
