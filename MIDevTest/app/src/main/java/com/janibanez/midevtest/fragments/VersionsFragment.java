@@ -1,14 +1,17 @@
 package com.janibanez.midevtest.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.janibanez.midevtest.MainActivity;
 import com.janibanez.midevtest.R;
+import com.janibanez.midevtest.VersionDisplayActivity;
 import com.janibanez.midevtest.adapters.VersionsListAdapter;
 import com.janibanez.server.http.response.DbResponse;
 import com.janibanez.server.models.Version;
@@ -18,7 +21,7 @@ import java.util.ArrayList;
 /**
  * Created by jwgibanez on 21/01/2016.
  */
-public class VersionsFragment extends Fragment implements MainActivity.MainUpdateListener {
+public class VersionsFragment extends Fragment implements MainActivity.MainUpdateListener, AdapterView.OnItemClickListener {
 
     MainActivity mActivity;
     ListView mList;
@@ -40,6 +43,7 @@ public class VersionsFragment extends Fragment implements MainActivity.MainUpdat
 
         mList = (ListView) rootView.findViewById(R.id.list);
         mList.setAdapter(mAdapter);
+        mList.setOnItemClickListener(this);
 
         return rootView;
     }
@@ -58,4 +62,13 @@ public class VersionsFragment extends Fragment implements MainActivity.MainUpdat
             mAdapter.notifyDataSetChanged();
         }
     }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(mActivity, VersionDisplayActivity.class);
+        intent.putExtra("version", mAdapter.getItem(position));
+        mActivity.startActivity(intent);
+    }
+
+
 }
