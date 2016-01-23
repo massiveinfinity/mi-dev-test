@@ -1,6 +1,7 @@
 package com.janibanez.midevtest;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -20,7 +21,11 @@ import java.io.IOException;
  */
 public class VersionDisplayActivity extends AppCompatActivity {
 
+    private static final int REQUEST_EDIT = 100;
+
     Version mData;
+
+    TextView mName, mCodename, mVersion, mTarget, mDistribution;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,30 +35,15 @@ public class VersionDisplayActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TextView name = (TextView) findViewById(R.id.name);
-        TextView codename = (TextView) findViewById(R.id.codename);
-        TextView version = (TextView) findViewById(R.id.version);
-        TextView target = (TextView) findViewById(R.id.target);
-        TextView distribution = (TextView) findViewById(R.id.distribution);
+        mName = (TextView) findViewById(R.id.name);
+        mCodename = (TextView) findViewById(R.id.codename);
+        mVersion = (TextView) findViewById(R.id.version);
+        mTarget = (TextView) findViewById(R.id.target);
+        mDistribution = (TextView) findViewById(R.id.distribution);
 
         mData = (Version) getIntent().getSerializableExtra("version");
 
-        if (mData != null) {
-            if (!TextUtils.isEmpty(mData.name))
-                name.setText(mData.name);
-
-            if (!TextUtils.isEmpty(mData.codename))
-                codename.setText(mData.codename);
-
-            if (!TextUtils.isEmpty(mData.version))
-                version.setText(mData.version);
-
-            if (!TextUtils.isEmpty(mData.target))
-                target.setText(mData.target);
-
-            if (!TextUtils.isEmpty(mData.distribution))
-                distribution.setText(mData.distribution);
-        }
+        initFields();
     }
 
     @Override
@@ -68,11 +58,54 @@ public class VersionDisplayActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 break;
+            case R.id.action_edit:
+                Intent intent = new Intent(this, VersionEditActivity.class);
+                intent.putExtra("version", mData);
+                startActivityForResult(intent, REQUEST_EDIT);
+                break;
             case R.id.action_delete:
                 showConfirmation();
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case REQUEST_EDIT:
+                if (resultCode == MainActivity.RESULT_REFRESH) {
+                    // set result to update main activity
+                    setResult(MainActivity.RESULT_REFRESH);
+
+                    Version updatedVersion = (Version) data.getSerializableExtra("version");
+                    if (updatedVersion != null) {
+                        // update view
+                        mData = updatedVersion;
+                        initFields();
+                    }
+                }
+                break;
+        }
+    }
+
+    private void initFields() {
+        if (mData != null) {
+            if (!TextUtils.isEmpty(mData.name))
+                mName.setText(mData.name);
+
+            if (!TextUtils.isEmpty(mData.codename))
+                mCodename.setText(mData.codename);
+
+            if (!TextUtils.isEmpty(mData.version))
+                mVersion.setText(mData.version);
+
+            if (!TextUtils.isEmpty(mData.target))
+                mTarget.setText(mData.target);
+
+            if (!TextUtils.isEmpty(mData.distribution))
+                mDistribution.setText(mData.distribution);
+        }
     }
 
     private void showConfirmation() {

@@ -1,6 +1,7 @@
 package com.janibanez.midevtest;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,10 +28,13 @@ import java.io.IOException;
  */
 public class DeviceDisplayActivity extends AppCompatActivity {
 
+    private static final int REQUEST_EDIT = 100;
+
     Device mData;
     ImageCache mImageCache;
 
     LinearLayout mImageLayout;
+    TextView mName, mAndroidId, mSnippet, mCarrier;
     ImageView mImage;
 
     @Override
@@ -44,31 +48,16 @@ public class DeviceDisplayActivity extends AppCompatActivity {
         MainApplication application = (MainApplication) getApplication();
         mImageCache = application.getImageCache();
 
-        TextView name = (TextView) findViewById(R.id.name);
-        TextView androidId = (TextView) findViewById(R.id.android_id);
-        TextView snippet = (TextView) findViewById(R.id.snippet);
-        TextView carrier = (TextView) findViewById(R.id.carrier);
+        mName = (TextView) findViewById(R.id.name);
+        mAndroidId = (TextView) findViewById(R.id.android_id);
+        mSnippet = (TextView) findViewById(R.id.snippet);
+        mCarrier = (TextView) findViewById(R.id.carrier);
         mImageLayout = (LinearLayout) findViewById(R.id.li_image);
         mImage = (ImageView) findViewById(R.id.image);
 
         mData = (Device) getIntent().getSerializableExtra("device");
 
-        if (mData != null) {
-            if (!TextUtils.isEmpty(mData.name))
-                name.setText(mData.name);
-
-            if (mData.androidId > 0)
-                androidId.setText(String.valueOf(mData.androidId));
-
-            if (!TextUtils.isEmpty(mData.snippet))
-                snippet.setText(mData.snippet);
-
-            if (!TextUtils.isEmpty(mData.carrier))
-                carrier.setText(mData.carrier);
-
-            if (!TextUtils.isEmpty(mData.imageUrl))
-                loadImage(mData.imageUrl);
-        }
+        initFields();
     }
 
     @Override
@@ -83,11 +72,54 @@ public class DeviceDisplayActivity extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 break;
+            case R.id.action_edit:
+                Intent intent = new Intent(this, DeviceEditActivity.class);
+                intent.putExtra("device", mData);
+                startActivityForResult(intent, REQUEST_EDIT);
+                break;
             case R.id.action_delete:
                 showConfirmation();
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case REQUEST_EDIT:
+                if (resultCode == MainActivity.RESULT_REFRESH) {
+                    // set result to update main activity
+                    setResult(MainActivity.RESULT_REFRESH);
+
+                    Device updatedDevice = (Device) data.getSerializableExtra("device");
+                    if (updatedDevice != null) {
+                        // update view
+                        mData = updatedDevice;
+                        initFields();
+                    }
+                }
+                break;
+        }
+    }
+
+    private void initFields() {
+        if (mData != null) {
+            if (!TextUtils.isEmpty(mData.name))
+                mName.setText(mData.name);
+
+            if (mData.androidId > 0)
+                mAndroidId.setText(String.valueOf(mData.androidId));
+
+            if (!TextUtils.isEmpty(mData.snippet))
+                mSnippet.setText(mData.snippet);
+
+            if (!TextUtils.isEmpty(mData.carrier))
+                mCarrier.setText(mData.carrier);
+
+            if (!TextUtils.isEmpty(mData.imageUrl))
+                loadImage(mData.imageUrl);
+        }
     }
 
     private void showConfirmation() {

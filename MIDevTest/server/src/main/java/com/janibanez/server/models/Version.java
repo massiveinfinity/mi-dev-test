@@ -10,6 +10,10 @@ public class Version extends ServerModel implements Serializable {
     public int id;
     public String codename, distribution, name, target, version;
 
+    public Version() {
+
+    }
+
     public Version(String name, String version, String codename, String target, String distribution) {
         this.name = name;
         this.version = version;

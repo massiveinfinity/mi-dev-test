@@ -38,7 +38,9 @@ public class MiApi {
         CreateVersion,
         GetDb,
         DeleteDevice,
-        DeleteVersion
+        DeleteVersion,
+        UpdateDevice,
+        UpdateVersion
     }
 
     Context mContext;
@@ -69,6 +71,12 @@ public class MiApi {
                 break;
             case DeleteVersion:
                 deleteVersion(id, callback);
+                break;
+            case UpdateDevice:
+                updateDevice(id, (Device) model, callback);
+                break;
+            case UpdateVersion:
+                updateVersion(id, (Version) model, callback);
                 break;
         }
     }
@@ -233,6 +241,84 @@ public class MiApi {
                 if (callback != null) {
                     if (response.isSuccessful()) {
                         callback.onResponse(null);
+                    } else {
+                        callback.onFailure(new Exception("Response is unsuccessful."));
+                    }
+                }
+            }
+        });
+    }
+
+    private void updateDevice(int id, Device device,  final ICallback<Device> callback) {
+
+        RequestBody requestBody = new FormBody.Builder()
+                .add("name", device.name)
+                .add("androidId", String.valueOf(device.androidId))
+                .add("carrier", device.carrier)
+                .add("imageUrl", device.imageUrl)
+                .add("snippet", device.snippet)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(TextUtils.concat(API_URL, String.format(DEVICE_RESOURCE, id)).toString())
+                .put(requestBody)
+                .build();
+
+        Call call = mClient.newCall(request);
+
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                if (callback != null) {
+                    callback.onFailure(e);
+                }
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (callback != null) {
+                    if (response.isSuccessful()) {
+                        Device result = mGson.fromJson(response.body().string(), Device.class);
+                        callback.onResponse(result);
+                    } else {
+                        callback.onFailure(new Exception("Response is unsuccessful."));
+                    }
+                }
+            }
+        });
+    }
+
+    private void updateVersion(int id, Version version,  final ICallback<Version> callback) {
+
+        RequestBody requestBody = new FormBody.Builder()
+                .add("name", version.name)
+                .add("codename", version.codename)
+                .add("version", version.version)
+                .add("target", version.target)
+                .add("distribution", version.distribution)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(TextUtils.concat(API_URL, String.format(VERSION_RESOURCE, id)).toString())
+                .put(requestBody)
+                .build();
+
+        Call call = mClient.newCall(request);
+
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                if (callback != null) {
+                    callback.onFailure(e);
+                }
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (callback != null) {
+                    if (response.isSuccessful()) {
+                        Version result = mGson.fromJson(response.body().string(), Version.class);
+                        callback.onResponse(result);
                     } else {
                         callback.onFailure(new Exception("Response is unsuccessful."));
                     }

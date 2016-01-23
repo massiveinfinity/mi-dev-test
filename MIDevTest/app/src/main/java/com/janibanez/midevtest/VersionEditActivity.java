@@ -1,6 +1,7 @@
 package com.janibanez.midevtest;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -21,6 +22,8 @@ import java.io.IOException;
  */
 public class VersionEditActivity extends AppCompatActivity {
 
+    Version mData;
+
     EditText mName, mVersion, mCodename, mTarget, mDistribution;
 
     @Override
@@ -31,12 +34,15 @@ public class VersionEditActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mData = (Version) getIntent().getSerializableExtra("version");
+
         mName = (EditText) findViewById(R.id.name);
         mVersion = (EditText) findViewById(R.id.version);
         mCodename = (EditText) findViewById(R.id.codename);
         mTarget = (EditText) findViewById(R.id.target);
         mDistribution = (EditText) findViewById(R.id.distribution);
 
+        initFields();
     }
 
     @Override
@@ -52,50 +58,88 @@ public class VersionEditActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.action_create:
+                if (mData != null) {
+                    if (mData.id > 0) {
+                        // put to update version
+                        updateVersion();
+                        break;
+                    }
+                }
+                // post to create new version
                 createVersion();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    private void initFields() {
+        if (mData != null) {
+            if (!TextUtils.isEmpty(mData.name))
+                mName.setText(mData.name);
+
+            if (!TextUtils.isEmpty(mData.codename))
+                mCodename.setText(mData.codename);
+
+            if (!TextUtils.isEmpty(mData.version))
+                mVersion.setText(mData.version);
+
+            if (!TextUtils.isEmpty(mData.target))
+                mTarget.setText(mData.target);
+
+            if (!TextUtils.isEmpty(mData.distribution))
+                mDistribution.setText(mData.distribution);
+        }
+    }
+
+    private boolean isInfoValid() {
+
+        mData.name = mName.getText().toString();
+        mData.version = mVersion.getText().toString();
+        mData.codename = mCodename.getText().toString();
+        mData.target = mTarget.getText().toString();
+        mData.distribution = mDistribution.getText().toString();
+
+        if (TextUtils.isEmpty(mData.name)) {
+            Toast.makeText(this, "Name is empty.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (TextUtils.isEmpty(mData.version)) {
+            Toast.makeText(this, "Version is empty.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (TextUtils.isEmpty(mData.codename)) {
+            Toast.makeText(this, "Codename is empty.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (TextUtils.isEmpty(mData.target)) {
+            Toast.makeText(this, "Target is empty.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if (TextUtils.isEmpty(mData.distribution)) {
+            Toast.makeText(this, "Distribution is empty.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        return true;
+    }
+
     private void createVersion() {
 
-        String name = mName.getText().toString();
-        String version = mVersion.getText().toString();
-        String codename = mCodename.getText().toString();
-        String target = mTarget.getText().toString();
-        String distribution = mDistribution.getText().toString();
-
-        if (TextUtils.isEmpty(name)) {
-            Toast.makeText(this, "Name is empty.", Toast.LENGTH_LONG).show();
-            return;
+        if (mData == null) {
+            mData = new Version();
         }
 
-        if (TextUtils.isEmpty(version)) {
-            Toast.makeText(this, "Version is empty.", Toast.LENGTH_LONG).show();
+        if (!isInfoValid())
+            // abort
             return;
-        }
-
-        if (TextUtils.isEmpty(codename)) {
-            Toast.makeText(this, "Codename is empty.", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        if (TextUtils.isEmpty(target)) {
-            Toast.makeText(this, "Target is empty.", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        if (TextUtils.isEmpty(distribution)) {
-            Toast.makeText(this, "Distribution is empty.", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        Version data = new Version(name, version, codename, target, distribution);
 
         MiApi api = new MiApi(this);
 
-        api.call(MiApi.Action.CreateVersion, 0, data, new ICallback() {
+        api.call(MiApi.Action.CreateVersion, 0, mData, new ICallback() {
             @Override
             public void onFailure(Throwable throwable) {
                 runOnUiThread(new Runnable() {
@@ -121,7 +165,44 @@ public class VersionEditActivity extends AppCompatActivity {
                 VersionEditActivity.this.finish();
             }
         });
+    }
 
+    private void updateVersion() {
+
+        if (!isInfoValid())
+            // abort
+            return;
+
+        MiApi api = new MiApi(this);
+
+        api.call(MiApi.Action.UpdateVersion, mData.id, mData, new ICallback<Version>() {
+            @Override
+            public void onFailure(Throwable throwable) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        DialogUtilities.showMessageDialog(
+                                VersionEditActivity.this,
+                                getString(R.string.dialog_title_alert),
+                                getString(R.string.dialog_message_something_went_wrong),
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Version response) throws IOException {
+                Intent intent = new Intent();
+                intent.putExtra("version", response);
+                setResult(MainActivity.RESULT_REFRESH, intent);
+                VersionEditActivity.this.finish();
+            }
+        });
     }
 
 }
