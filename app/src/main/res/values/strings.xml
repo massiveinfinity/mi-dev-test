@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ShowCaseAndroidApp</string>
+    <string name="no_internet">Please check your internet connection</string>
+</resources>

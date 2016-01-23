@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="divider_line">#626262</color>
+    <color name="background_color_press">#efefec</color>
+    <color name="base_color">#FF414040</color>
+    <color name="hint_text">#FF565656</color>
+    <color name="colorPrimary">#FF037C89</color>
+    <color name="colorPrimaryDark">#FF03717C</color>
+    <color name="error_color">#FF890325</color>
+</resources>
