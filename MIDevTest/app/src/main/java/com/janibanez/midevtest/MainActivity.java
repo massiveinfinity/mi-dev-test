@@ -1,6 +1,7 @@
 package com.janibanez.midevtest;
 
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -8,14 +9,19 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+import com.janibanez.database.helpers.DeviceDaoHelper;
+import com.janibanez.database.helpers.VersionDaoHelper;
+import com.janibanez.database.models.DbDevice;
+import com.janibanez.database.models.DbVersion;
 import com.janibanez.midevtest.adapters.MainPagerAdapter;
 import com.janibanez.midevtest.fragments.DevicesFragment;
 import com.janibanez.midevtest.fragments.VersionsFragment;
 import com.janibanez.server.ICallback;
 import com.janibanez.server.MiApi;
 import com.janibanez.server.models.Db;
+import com.janibanez.server.models.Device;
+import com.janibanez.server.models.Version;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -134,10 +140,56 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         mProgessDialog.dismiss();
 
+                        // clear previous db data
+                        DeviceDaoHelper.deleteDevices(MainActivity.this);
+                        VersionDaoHelper.deleteVersions(MainActivity.this);
+
+                        // add all latest devices
+                        if (response.devices != null) {
+                            for (Device device : response.devices) {
+                                ContentValues values = new ContentValues();
+                                values.put(DbDevice.COLUMN_ID, device.id);
+                                values.put(DbDevice.COLUMN_ANDROID_ID, device.androidId);
+                                values.put(DbDevice.COLUMN_NAME, device.name);
+                                values.put(DbDevice.COLUMN_SNIPPET, device.snippet);
+                                values.put(DbDevice.COLUMN_CARRIER, device.carrier);
+                                values.put(DbDevice.COLUMN_IMAGE_URL, device.imageUrl);
+                                DeviceDaoHelper.insertDevice(MainActivity.this, values);
+                            }
+                        }
+
+                        // add all latest versions
+                        if (response.android != null) {
+                            for (Version version : response.android) {
+                                ContentValues values = new ContentValues();
+                                values.put(DbVersion.COLUMN_ID, version.id);
+                                values.put(DbVersion.COLUMN_NAME, version.name);
+                                values.put(DbVersion.COLUMN_VERSION, version.version);
+                                values.put(DbVersion.COLUMN_CODENAME, version.codename);
+                                values.put(DbVersion.COLUMN_TARGET, version.target);
+                                values.put(DbVersion.COLUMN_DISTRIBUTION, version.distribution);
+                                VersionDaoHelper.insertVersion(MainActivity.this, values);
+                            }
+                        }
+
                         for (int i=0; i < mUpdateListeners.size(); i++) {
                             mUpdateListeners.get(i).onUpdate(response);
                         }
-                    }
+
+                        /* TESTS
+                        List<Version> versions = VersionDaoHelper.getVersions(MainActivity.this);
+
+                        VersionDaoHelper.deleteVersions(MainActivity.this);
+
+                        versions = VersionDaoHelper.getVersions(MainActivity.this);
+
+                        List<Device> devices = DeviceDaoHelper.getDevices(MainActivity.this);
+
+                        DeviceDaoHelper.deleteDevices(MainActivity.this);
+
+                        devices = DeviceDaoHelper.getDevices(MainActivity.this);
+                        */
+                     }
                 });
             }
         });

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.janibanez.database.helpers.VersionDaoHelper;
 import com.janibanez.midevtest.MainActivity;
 import com.janibanez.midevtest.R;
 import com.janibanez.midevtest.VersionDisplayActivity;
@@ -17,6 +18,7 @@ import com.janibanez.server.models.Db;
 import com.janibanez.server.models.Version;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jwgibanez on 21/01/2016.
@@ -58,7 +60,11 @@ public class VersionsFragment extends Fragment implements MainActivity.MainUpdat
     public void onUpdate(Db response) {
         if (response != null) {
             mAdapter.clear();
-            mAdapter.addAll(response.android);
+
+            // get all versions from db
+            List<Version> versions = VersionDaoHelper.getVersions(getActivity());
+
+            mAdapter.addAll(versions);
             mAdapter.notifyDataSetChanged();
         }
     }

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.janibanez.database.helpers.DeviceDaoHelper;
 import com.janibanez.midevtest.DeviceDisplayActivity;
 import com.janibanez.midevtest.MainActivity;
 import com.janibanez.midevtest.R;
@@ -17,6 +18,7 @@ import com.janibanez.server.models.Db;
 import com.janibanez.server.models.Device;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jwgibanez on 21/01/2016.
@@ -58,7 +60,11 @@ public class DevicesFragment extends Fragment implements MainActivity.MainUpdate
     public void onUpdate(Db response) {
         if (response != null) {
             mAdapter.clear();
-            mAdapter.addAll(response.devices);
+
+            // get all devices from db
+            List<Device> devices = DeviceDaoHelper.getDevices(getActivity());
+
+            mAdapter.addAll(devices);
             mAdapter.notifyDataSetChanged();
         }
     }

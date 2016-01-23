@@ -55,7 +55,7 @@ public class VersionsListAdapter extends ArrayAdapter<Version> {
         }
 
         holder.name.setText(TextUtils.concat("Name: ", data.name));
-        holder.version.setText(TextUtils.concat("Version: ", data.version));
+        holder.version.setText(TextUtils.concat("DbVersion: ", data.version));
         holder.codename.setText(TextUtils.concat("Codename: ", data.codename));
 
         return convertView;
