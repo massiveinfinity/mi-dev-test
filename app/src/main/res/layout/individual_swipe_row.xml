@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:background="@drawable/white_corner_box"
+    android:paddingBottom="3dp"
+    android:paddingTop="3dp"
+    swipe:leftEdgeSwipeOffset="0dp"
+    swipe:rightEdgeSwipeOffset="0dp">
+
+    <!--Bottom View For Right to Left-->
+
+    <LinearLayout
+        android:id="@+id/bottom_wrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+
+        <RelativeLayout
+            android:id="@+id/relDelete"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="5dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:drawableTop="@mipmap/delete"
+                android:gravity="center"
+                android:text="Delete"
+                android:textColor="#fff"
+                android:textSize="16sp"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+    <!-- Top View,  Row itemView of RecyclerView -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include layout="@layout/individual_front_row" />
+    </LinearLayout>
+</com.daimajia.swipe.SwipeLayout>

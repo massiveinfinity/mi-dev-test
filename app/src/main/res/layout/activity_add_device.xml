@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include
+            layout="@layout/layout_toolbar"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:padding="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etDeviceName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Device Name"
+                android:singleLine="true"
+                android:textSize="16sp"
+                app:met_baseColor="@color/base_color"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="?colorAccent"
+                app:met_textColorHint="@color/hint_text"
+                app:met_underlineColor="@color/colorPrimary"
+                android:visibility="visible"/>
+
+            <LinearLayout
+                android:id="@+id/linDeviceName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tooltip_box"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Required"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:id="@+id/txtDeviceName"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/black"
+                        android:text="The name of the device. Alphanumeric allowed" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etDeviceDescription"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Device Description"
+                android:singleLine="true"
+                android:textSize="16sp"
+                app:met_baseColor="@color/base_color"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="?colorAccent"
+                app:met_textColorHint="@color/hint_text"
+                app:met_underlineColor="@color/colorPrimary"
+                android:inputType="text"
+                android:visibility="visible"/>
+
+            <LinearLayout
+                android:id="@+id/linDeviceDescription"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tooltip_box"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Required"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:id="@+id/txtDeviceDesc"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/black"
+                        android:text="A little more about the device. 256 characters max. Alphanumeric allowed." />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etAndroidVersion"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Android Version"
+                android:singleLine="true"
+                android:textSize="16sp"
+                app:met_baseColor="@color/base_color"
+                app:met_floatingLabel="highlight"
+                android:focusableInTouchMode="false"
+                app:met_primaryColor="?colorAccent"
+                app:met_textColorHint="@color/hint_text"
+                app:met_underlineColor="@color/colorPrimary"
+                android:drawableRight="@mipmap/arrow"
+                android:visibility="visible"/>
+
+            <LinearLayout
+                android:id="@+id/linAndroidVersion"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tooltip_box"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Required"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:id="@+id/txtAndroidVersion"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/black"
+                        android:text="Select the Android OS the device supports." />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

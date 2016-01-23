@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include
+            layout="@layout/layout_toolbar"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:padding="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etAndroidName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Android Name"
+                android:singleLine="true"
+                android:textSize="16sp"
+                app:met_baseColor="@color/base_color"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="?colorAccent"
+                app:met_textColorHint="@color/hint_text"
+                app:met_underlineColor="@color/colorPrimary"
+                android:visibility="visible"/>
+
+            <LinearLayout
+                android:id="@+id/linAndroidName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tooltip_box"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Required"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:id="@+id/txtAndroidName"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/black"
+                        android:text="Alphanumeric text allowed" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etAndroidVersion"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Android Version"
+                android:singleLine="true"
+                android:textSize="16sp"
+                app:met_baseColor="@color/base_color"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="?colorAccent"
+                app:met_textColorHint="@color/hint_text"
+                app:met_underlineColor="@color/colorPrimary"
+                android:inputType="numberDecimal"
+                android:visibility="visible"/>
+
+            <LinearLayout
+                android:id="@+id/linAndroidVersion"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tooltip_box"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Required"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:id="@+id/txtAndroidVersion"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/black"
+                        android:text="Decimal values only. For example: 1.0" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etAndroidCodeName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Android Code Name"
+                android:singleLine="true"
+                android:textSize="16sp"
+                app:met_baseColor="@color/base_color"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="?colorAccent"
+                app:met_textColorHint="@color/hint_text"
+                app:met_underlineColor="@color/colorPrimary"
+                android:visibility="visible"/>
+
+            <LinearLayout
+                android:id="@+id/linAndroidCodeName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tooltip_box"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Required"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:id="@+id/txtAndroidCodeName"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/black"
+                        android:text="Alphanumeric text allowed" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etAndroidTarget"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Android Target"
+                android:singleLine="true"
+                android:textSize="16sp"
+                app:met_baseColor="@color/base_color"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="?colorAccent"
+                app:met_textColorHint="@color/hint_text"
+                app:met_underlineColor="@color/colorPrimary"
+                android:inputType="number"
+                android:visibility="visible"/>
+
+            <LinearLayout
+                android:id="@+id/linAndroidTarget"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tooltip_box"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Required"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:id="@+id/txtAndroidTarget"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/black"
+                        android:text="Only numerics allowed. For example: 15" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/etDistribution"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Android Distribution"
+                android:singleLine="true"
+                android:textSize="16sp"
+                app:met_baseColor="@color/base_color"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="?colorAccent"
+                app:met_textColorHint="@color/hint_text"
+                app:met_underlineColor="@color/colorPrimary"
+                android:inputType="numberDecimal"
+                android:visibility="visible"/>
+
+            <LinearLayout
+                android:id="@+id/linDistribution"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tooltip_box"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Required"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:id="@+id/txtDistribution"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/black"
+                        android:text="Decimal values allowed. The value is in percentage. For example: 10.5%" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
