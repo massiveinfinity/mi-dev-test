@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mi.showcase.ShowcaseActivity">
+
+    <item android:id="@+id/overflow_menu"
+        android:orderInCategory="30"
+        android:title=""
+        android:icon="@mipmap/ic_action_overflow"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/action_settings"
+                android:orderInCategory="100"
+                android:title="@string/action_settings"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/menu_refresh"
+                android:orderInCategory="50"
+                app:showAsAction="never"
+                android:title="@string/menu_refresh"/>
+        </menu>
+    </item>
+</menu>
