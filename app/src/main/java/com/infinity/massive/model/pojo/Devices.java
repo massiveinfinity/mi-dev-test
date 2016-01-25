@@ -1,4 +1,4 @@
-package com.infinity.massive.model;
+package com.infinity.massive.model.pojo;
 
 /**
  * Created by Ilanthirayan on 25/1/16.

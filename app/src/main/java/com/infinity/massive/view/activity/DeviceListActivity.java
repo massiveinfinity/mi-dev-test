@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.infinity.massive.R;
+import com.infinity.massive.view.fragment.DeviceListFragment;
 
 public class DeviceListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
