@@ -1,3 +1,5 @@
+# I have done with the assignment.
+
 # MI Developer Test
 
 You have just been hired as a mobile developer in a new company.
@@ -26,3 +28,4 @@ Multithreading is a plus.
 ## How to submit your work?
 Fork this repository. This exercise should take about 2 days. However, you are not timed and you can send us a pull request whenever you are ready to show us your work.
 And if you have something live going on, even better!
+
