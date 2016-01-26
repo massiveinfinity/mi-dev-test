@@ -91,7 +91,7 @@ public class DeviceListFragment extends Fragment{
                     progressBar.setVisibility(View.GONE);
                     mRecyclerView.setVisibility(View.GONE);
                     emptyListText.setVisibility(View.VISIBLE);
-                    Log.d(TAG, "@@displayEmptyOrList showing empty product list message");
+                    Log.d(TAG, "@@displayEmptyOrList showing empty device list message");
                     return;
                 }
 
@@ -100,7 +100,7 @@ public class DeviceListFragment extends Fragment{
                 mRecyclerView.setVisibility(View.VISIBLE);
                 emptyListText.setVisibility(View.GONE);
                 initializeAdapter();
-                Log.d(TAG, "@@displayEmptyOrList showing the product list");
+                Log.d(TAG, "@@displayEmptyOrList showing the device list");
 
             }
         });
@@ -125,9 +125,9 @@ public class DeviceListFragment extends Fragment{
 
         //CARD VIEW
         mRecyclerView = (RecyclerView) view.findViewById(R.id.device_recycle_list);
+        mRecyclerView.setHasFixedSize(true);
         mStaggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mStaggeredGridLayoutManager);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         displayEmptyOrList();
 
