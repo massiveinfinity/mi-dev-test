@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +42,7 @@ public class DeviceListFragment extends Fragment{
 
     private RecyclerView mRecyclerView;
 
-    private GridLayoutManager mGridLayoutManager ;
+    private StaggeredGridLayoutManager mStaggeredGridLayoutManager ;
     private List<Devices> devicesList;
 
 
@@ -124,8 +125,8 @@ public class DeviceListFragment extends Fragment{
 
         //CARD VIEW
         mRecyclerView = (RecyclerView) view.findViewById(R.id.device_recycle_list);
-        mGridLayoutManager = new GridLayoutManager(getActivity(), 2);
-        mRecyclerView.setLayoutManager(mGridLayoutManager);
+        mStaggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(mStaggeredGridLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         displayEmptyOrList();
