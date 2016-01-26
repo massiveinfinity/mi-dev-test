@@ -14,7 +14,7 @@ public class Devices {
     private int id;
     private String imageUrl;
     private String name;
-    private String androidId;
+    private int androidId;
     private String snippet;
 
     public Devices(){}
@@ -42,7 +42,7 @@ public class Devices {
         setName(cursor.getString(i));
 
         i = cursor.getColumnIndexOrThrow(Columns.ANDROID_ID);
-        setAndroidId(cursor.getString(i));
+        setAndroidId(cursor.getInt(i));
 
         i = cursor.getColumnIndexOrThrow(Columns.SNIPPET);
         setSnippet(cursor.getString(i));
@@ -83,11 +83,11 @@ public class Devices {
         this.name = name;
     }
 
-    public String getAndroidId() {
+    public int getAndroidId() {
         return androidId;
     }
 
-    public void setAndroidId(String androidId) {
+    public void setAndroidId(int androidId) {
         this.androidId = androidId;
     }
 
