@@ -1,0 +1,116 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:clickable="true"
+    tools:context="com.mi.androidarsenal.fragment.VersionDetailFragment">
+
+    <TextView
+        android:id="@+id/version_detail_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/label_text_style"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/device_detail_name" />
+
+    <TextView
+        android:id="@+id/version_detail_name"
+        android:layout_width="wrap_content"
+        style="@style/detail_text_style"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@+id/version_detail_distribution"
+        android:layout_toRightOf="@+id/version_detail_name_label"
+        android:text="@string/device_detail_name" />
+
+    <TextView
+        android:id="@+id/version_detail_version_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/label_text_style"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/version_detail_name"
+        android:text="@string/version_label" />
+
+    <TextView
+        android:id="@+id/version_detail_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/detail_text_style"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/version_detail_name"
+        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@+id/version_detail_distribution"
+        android:layout_toRightOf="@+id/version_detail_version_label"
+        android:text="@string/version_label" />
+
+    <TextView
+        android:id="@+id/version_detail_codename_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/label_text_style"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/version_detail_version"
+        android:text="@string/version_codename" />
+
+    <TextView
+        android:id="@+id/version_detail_codename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/version_detail_version"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        style="@style/detail_text_style"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/version_detail_codename_label"
+        android:text="@string/version_codename" />
+
+    <TextView
+        android:id="@+id/version_detail_target_label"
+        style="@style/label_text_style"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/version_detail_codename"
+        android:text="@string/version_target" />
+
+    <TextView
+        android:id="@+id/version_detail_target"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/version_detail_codename"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        style="@style/detail_text_style"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/version_detail_target_label"
+        android:text="@string/version_target" />
+
+    <TextView
+        android:id="@+id/version_detail_distribution_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/version_detail_target"
+        style="@style/label_text_style"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/version_destribution" />
+
+    <TextView
+        android:id="@+id/version_detail_distribution"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/detail_text_style"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/version_detail_target"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/version_detail_distribution_label"
+        android:text="@string/version_destribution" />
+</RelativeLayout>
