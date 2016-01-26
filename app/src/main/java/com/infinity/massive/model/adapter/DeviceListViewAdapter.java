@@ -77,7 +77,7 @@ public class DeviceListViewAdapter extends RecyclerView.Adapter{
             final Devices item = devicesList.get(position);
             ((DeviceViewHolder) holder).nameTxt.setText(item.getName());
             ((DeviceViewHolder) holder).snippetTxt.setText(item.getSnippet());
-            ((DeviceViewHolder) holder).androidIdTxt.setText(item.getAndroidId());
+            ((DeviceViewHolder) holder).androidIdTxt.setText(String.valueOf(item.getAndroidId()));
 
             //Get the product image
             if(item.getImageUrl() != null) {
@@ -110,8 +110,8 @@ public class DeviceListViewAdapter extends RecyclerView.Adapter{
             deviceCardView = (CardView) itemView.findViewById(R.id.device_card_layout);
             deviceImg = (ImageView) itemView.findViewById(R.id.device_image);
             nameTxt = (TextView) itemView.findViewById(R.id.device_name_txt);
-            androidIdTxt = (TextView) itemView.findViewById(R.id.android_id_txt);
-            snippetTxt = (TextView) itemView.findViewById(R.id.snippet_txt);
+            androidIdTxt = (TextView) itemView.findViewById(R.id.device_android_id_txt);
+            snippetTxt = (TextView) itemView.findViewById(R.id.device_snippet_txt);
         }
 
         @Override
