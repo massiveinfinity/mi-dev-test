@@ -68,6 +68,22 @@ public class DataBaseClient {
         return devicesList;
     }
 
+    public synchronized Devices getDeviceDetails(int device_id){
+        Devices devices;
+        final SQLiteDatabase db = DBHelper.getInstance().getReadableDatabase();
+        final String selectionDevice = Devices.Columns.DEVICE_ID + " = ? ";
+        final String [] selectionArgsDevices = {String.valueOf(device_id)};
+        Cursor cursorDevice = db.query(Devices.TABLE_NAME, null,
+                selectionDevice, selectionArgsDevices, null, null, null);
+        if(cursorDevice.moveToNext()) {
+            devices = new Devices(cursorDevice);
+        }else{
+            devices = new Devices();
+        }
+
+        return devices;
+    }
+
 
     /**
      * Check if there is at least one Product Exist or Not

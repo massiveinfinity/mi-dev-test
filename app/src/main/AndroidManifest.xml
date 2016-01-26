@@ -23,6 +23,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".view.activity.AndroidVersionDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <!--Register all the services-->
         <service android:name="com.infinity.massive.controller.service.DeviceDownloadService"/>
 

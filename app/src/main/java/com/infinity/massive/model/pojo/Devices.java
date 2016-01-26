@@ -17,6 +17,8 @@ public class Devices {
     private String androidId;
     private String snippet;
 
+    public Devices(){}
+
     public interface Columns extends BaseColumns {
         String DEVICE_ID = "id";
         String IMAGE_URL = "image_url";
