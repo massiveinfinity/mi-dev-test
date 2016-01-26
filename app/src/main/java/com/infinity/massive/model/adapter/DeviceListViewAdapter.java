@@ -1,6 +1,7 @@
 package com.infinity.massive.model.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,8 +11,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.infinity.massive.ApplicationMassiveInfinity;
 import com.infinity.massive.R;
 import com.infinity.massive.model.pojo.Devices;
+import com.infinity.massive.view.activity.AndroidVersionDetailsActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -85,9 +88,9 @@ public class DeviceListViewAdapter extends RecyclerView.Adapter{
                 @Override
                 public void onClick(View v) {
                     //START THE PRODUCT DETAILS ACTIVITY
-                    /*Intent intent = new Intent(ApplicationMassiveInfinity.getContext(), AndroidVersionDetailsActivity.class);
-                    intent.putExtra(AndroidVersionDetailsActivity.EXTRAS_REDMART_PRODUCT_ID, item.getId());
-                    mActivity.startActivity(intent);*/
+                    Intent intent = new Intent(ApplicationMassiveInfinity.getContext(), AndroidVersionDetailsActivity.class);
+                    intent.putExtra(AndroidVersionDetailsActivity.EXTRAS_MASSIVE_INFINITY_DEVICE_ID, item.getId());
+                    mActivity.startActivity(intent);
                 }
             });
         }
