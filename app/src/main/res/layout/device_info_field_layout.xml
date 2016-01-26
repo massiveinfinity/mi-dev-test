@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/device_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp">
+
+            <EditText
+                android:id="@+id/device_dialog_name_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/dialog_name_text"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp">
+
+            <EditText
+                android:id="@+id/device_dialog_id_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/dialog_android_id_text"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:inputType="number"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp">
+
+            <EditText
+                android:id="@+id/device_dialog_image_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/dialog_image_url_text"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp">
+
+            <EditText
+                android:id="@+id/device_dialog_carrier_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/dialog_carrier_text"
+                android:imeOptions="actionNext"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp">
+
+            <EditText
+                android:id="@+id/device_dialog_snippet_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/dialog_snippet_text"
+                android:imeOptions="actionGo"
+                android:inputType="textMultiLine"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+    </LinearLayout>

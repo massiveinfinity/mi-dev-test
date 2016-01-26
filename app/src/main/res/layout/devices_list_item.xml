@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/dialog_bg"
+        android:padding="10dp">
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/device_thumbnail"
+            android:layout_width="@dimen/device_thmbnail_width"
+            android:layout_height="@dimen/device_thmbnail_height"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/device" />
+
+        <TextView
+            android:id="@+id/device_name"
+            style="@style/main_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/device_edit"
+            android:layout_toRightOf="@+id/device_thumbnail" />
+
+        <TextView
+            android:id="@+id/device_carrier"
+            style="@style/sub_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/device_name"
+            android:layout_below="@+id/device_name"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/device_edit" />
+
+        <ImageView
+            android:id="@+id/device_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/device_delete"
+            android:src="@android:drawable/ic_menu_edit" />
+
+        <ImageView
+            android:id="@+id/device_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@android:drawable/ic_menu_delete" />
+
+    </RelativeLayout>
+</LinearLayout>
