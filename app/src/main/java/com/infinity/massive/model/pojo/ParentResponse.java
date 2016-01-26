@@ -1,4 +1,7 @@
-package com.infinity.massive.model;
+package com.infinity.massive.model.pojo;
+
+import com.infinity.massive.model.pojo.Android;
+import com.infinity.massive.model.pojo.Devices;
 
 /**
  * Created by Ilanthirayan on 25/1/16.
