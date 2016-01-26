@@ -30,8 +30,8 @@ public class AndroidVersionController {
         androidVersionInfoService = retrofit.create(AndroidVersionInfoService.class);
     }
 
-    public Call<List<Android>> getProductDetailsService(){
-        Call<List<Android>> response = androidVersionInfoService.getAndroidVersions(
+    public Call<Android> getProductDetailsService(int device_id){
+        Call<Android> response = androidVersionInfoService.getAndroidVersionDetails(device_id
         );
 
         return response;
