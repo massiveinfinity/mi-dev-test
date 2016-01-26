@@ -129,8 +129,6 @@ public class DeviceListFragment extends Fragment{
         mStaggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mStaggeredGridLayoutManager);
 
-        displayEmptyOrList();
-
         return view;
     }
 }
