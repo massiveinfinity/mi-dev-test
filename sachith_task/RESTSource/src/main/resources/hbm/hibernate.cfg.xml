@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.datasource">jdbc/__ERPMySQLPool</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>       
+        
+        <mapping class="com.blackhat.entity.Credential"/>
+        <mapping class="com.blackhat.entity.User"/>
+        <mapping class="com.blackhat.entity.Customer"/>
+        <mapping class="com.blackhat.entity.JobOrder"/>
+        <mapping class="com.blackhat.entity.SampleJob"/>
+        <mapping class="com.blackhat.entity.Screen"/>
+        <mapping class="com.blackhat.entity.Artwork"/>
+        <mapping class="com.blackhat.entity.DeliveryAddress"/>
+        <mapping class="com.blackhat.entity.Sample"/>
+        <mapping class="com.blackhat.entity.Part"/>
+        <mapping class="com.blackhat.entity.PantoneColor"/>
+    </session-factory>
+</hibernate-configuration>

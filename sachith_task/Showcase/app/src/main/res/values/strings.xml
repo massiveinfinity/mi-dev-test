@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">Showcase</string>
+    <string name="title_activity_insert_data">Add Device</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_show_case">Showcase</string>
+    <string name="contentDescription_tempo">Temporary Content</string>
+
+    <!-- Dialog title strings -->
+    <string name="title_connection_dialog">Unable to connect</string>
+    <string name="title_information_dialog">Device Information</string>
+
+    <!-- Dialog message strings -->
+    <string name="message_connection_dialog">You need a network connection to use this app.
+        Please turn on Mobile Data or Wi-Fi in settings.</string>
+
+    <!-- Button strings -->
+    <string name="dialog_cancle">CANCLE</string>
+    <string name="dialog_settins">SETTINGS</string>
+    <string name="dialog_ok">OK</string>
+
+    <!-- MenuItem strings -->
+    <string name="overflow_menu">Overflow</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="save_action">Save</string>
+
+    <!-- Application titles-->
+    <string name="app_subtitle">MI Developer Android Solution</string>
+
+    <!-- ERROR handling messages-->
+    <string name="service_unavailable">HTTP 503 Service Unavailable</string>
+    <string name="saving_process_succes">Data saving process success</string>
+    <string name="saving_process_failed">Data saving process failed</string>
+    <string name="required_fields_empty">Some required fields are empty</string>
+
+    <string name="android">android</string>
+    <string name="devices">devices</string>
+    <string name="data_store">dataStore.json</string>
+
+    <!-- Text chunks-->
+    <string name="code_name">Code name:&#160;</string>
+    <string name="distribution">Distribution:&#160;</string>
+    <string name="carrier">Carrier:&#160;</string>
+    <string name="version">Version:&#160;</string>
+    <string name="none">None</string>
+    <string name="empty_string"></string>
+
+    <!-- EditText hints-->
+    <string name="deviceName">Device Name</string>
+    <string name="androidName">Android Name</string>
+    <string name="carrierET">Carrier</string>
+    <string name="version_no">Version</string>
+    <string name="target">Target API</string>
+    <string name="codeName">Code Name</string>
+    <string name="distributionET">Distribution</string>
+    <string name="snippet">Remark</string>
+    <string name="imageUrl">Image URL</string>
+
+    <!-- Symbols -->
+    <string name="percentage_mark">%</string>
+</resources>
