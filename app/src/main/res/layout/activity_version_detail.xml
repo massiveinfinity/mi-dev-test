@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zahid.mitask.devicesinfo.activity.DeviceDetailActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/android_version_info"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="2">
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:padding="5dp"
+                android:text="@string/name"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_version_name"
+                android:padding="5dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:padding="5dp"
+                android:text="@string/version"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_version_code"
+                android:padding="5dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:padding="5dp"
+                android:text="@string/code_name"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_code_name"
+                android:padding="5dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:padding="5dp"
+                android:text="@string/target"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_target"
+                android:padding="5dp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_column="1"
+                android:padding="5dp"
+                android:text="@string/distribution"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView_distribution"
+                android:padding="5dp" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
