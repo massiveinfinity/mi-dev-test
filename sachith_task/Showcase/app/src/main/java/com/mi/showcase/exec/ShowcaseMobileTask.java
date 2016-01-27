@@ -138,27 +138,31 @@ public abstract class ShowcaseMobileTask<E, V, T> extends AsyncTask<E, V, T> {
                 JSONObject androidObject = (JSONObject) androidArray.get(i);
                 for (int x = 0; x < devicesArray.length(); x++) {
                     JSONObject devicesObject = (JSONObject) devicesArray.get(x);
-                    if (androidObject.getInt("id") == devicesObject.getInt("androidId")) {
-                        MobileDataListModel listModel = new MobileDataListModel();
+                    try {
+                        if (androidObject.getInt("id") == devicesObject.getInt("androidId")) {
+                            MobileDataListModel listModel = new MobileDataListModel();
 
-                        try {
-                            listModel.setId(androidObject.getInt("id"));
-                            listModel.setAndroidName(androidObject.getString("name"));
-                            listModel.setVersion(androidObject.getString("version"));
-                            listModel.setDeviceName(devicesObject.getString("name"));
-                            listModel.setCodeName(androidObject.getString("codename"));
-                            listModel.setDistribution(androidObject.getString("distribution"));
                             try {
-                                listModel.setCarrier(devicesObject.getString("carrier"));
+                                listModel.setId(androidObject.getInt("id"));
+                                listModel.setAndroidName(androidObject.getString("name"));
+                                listModel.setVersion(androidObject.getString("version"));
+                                listModel.setDeviceName(devicesObject.getString("name"));
+                                listModel.setCodeName(androidObject.getString("codename"));
+                                listModel.setDistribution(androidObject.getString("distribution"));
+                                try {
+                                    listModel.setCarrier(devicesObject.getString("carrier"));
+                                } catch (JSONException ex) {
+                                    listModel.setCarrier(super.context.getString(R.string.none));
+                                }
+                                listModel.setSnippet(devicesObject.getString("snippet"));
+                                listModel.setImageUrl(devicesObject.getString("imageUrl"));
                             } catch (JSONException ex) {
-                                listModel.setCarrier(super.context.getString(R.string.none));
+                                Log.e(ex.getMessage(), ex.toString());
                             }
-                            listModel.setSnippet(devicesObject.getString("snippet"));
-                            listModel.setImageUrl(devicesObject.getString("imageUrl"));
-                        } catch (JSONException ex) {
-                            Log.e(ex.getMessage(), ex.toString());
+                            dataList.add(listModel);
                         }
-                        dataList.add(listModel);
+                    } catch (JSONException ex) {
+                        Log.e(ex.getMessage(), ex.toString());
                     }
                 }
             }
