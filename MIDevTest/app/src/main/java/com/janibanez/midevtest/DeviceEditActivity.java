@@ -15,6 +15,8 @@ import com.janibanez.server.ICallback;
 import com.janibanez.server.MiApi;
 import com.janibanez.server.models.Device;
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 
 /**
@@ -77,8 +79,8 @@ public class DeviceEditActivity extends AppCompatActivity {
             if (!TextUtils.isEmpty(mData.name))
                 mName.setText(mData.name);
 
-            if (mData.androidId > 0)
-                mAndroidId.setText(String.valueOf(mData.androidId));
+            if (!TextUtils.isEmpty(mData.androidId))
+                mAndroidId.setText(mData.androidId);
 
             if (!TextUtils.isEmpty(mData.snippet))
                 mSnippet.setText(mData.snippet);
@@ -97,19 +99,14 @@ public class DeviceEditActivity extends AppCompatActivity {
         mData.snippet = mSnippet.getText().toString();
         mData.carrier = mCarrier.getText().toString();
         mData.imageUrl = mImageUrl.getText().toString();
-
-        try {
-            mData.androidId = Integer.parseInt(mAndroidId.getText().toString());
-        } catch (Exception e) {
-            mData.androidId = 0;
-        }
+        mData.androidId = mAndroidId.getText().toString();
 
         if (TextUtils.isEmpty(mData.name)) {
             Toast.makeText(this, "Name is empty.", Toast.LENGTH_LONG).show();
             return false;
         }
 
-        if (mData.androidId < 1) {
+        if (TextUtils.isEmpty(mData.androidId)) {
             Toast.makeText(this, "Android ID cannot be empty or 0.", Toast.LENGTH_LONG).show();
             return false;
         }

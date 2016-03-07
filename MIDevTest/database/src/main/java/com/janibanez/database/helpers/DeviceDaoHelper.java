@@ -44,7 +44,7 @@ public class DeviceDaoHelper {
             while (cursor.moveToNext()) {
                 Device model = new Device();
                 model.id = cursor.getInt(cursor.getColumnIndex(DbDevice.COLUMN_ID));
-                model.androidId = cursor.getInt(cursor.getColumnIndex(DbDevice.COLUMN_ANDROID_ID));
+                model.androidId = cursor.getString(cursor.getColumnIndex(DbDevice.COLUMN_ANDROID_ID));
                 model.name = cursor.getString(cursor.getColumnIndex(DbDevice.COLUMN_NAME));
                 model.snippet = cursor.getString(cursor.getColumnIndex(DbDevice.COLUMN_SNIPPET));
                 model.carrier = cursor.getString(cursor.getColumnIndex(DbDevice.COLUMN_CARRIER));

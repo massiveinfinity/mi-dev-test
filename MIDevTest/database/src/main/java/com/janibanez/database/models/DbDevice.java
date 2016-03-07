@@ -22,7 +22,7 @@ public class DbDevice {
             TABLE_CREATE = "CREATE TABLE " + TABLE_NAME + " ( " +
             COLUMN_ID + " INTEGER PRIMARY KEY NOT NULL, " +
             COLUMN_NAME + " VARCHAR, " +
-            COLUMN_ANDROID_ID + " INTEGER DEFAULT 0,  " +
+            COLUMN_ANDROID_ID + " VARCHAR,  " +
             COLUMN_CARRIER + " VARCHAR, " +
             COLUMN_SNIPPET + " VARCHAR, " +
             COLUMN_IMAGE_URL + " VARCHAR )";

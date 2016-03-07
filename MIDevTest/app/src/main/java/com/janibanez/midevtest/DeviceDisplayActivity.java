@@ -108,7 +108,7 @@ public class DeviceDisplayActivity extends AppCompatActivity {
             if (!TextUtils.isEmpty(mData.name))
                 mName.setText(mData.name);
 
-            if (mData.androidId > 0)
+            if (!TextUtils.isEmpty(mData.androidId))
                 mAndroidId.setText(String.valueOf(mData.androidId));
 
             if (!TextUtils.isEmpty(mData.snippet))

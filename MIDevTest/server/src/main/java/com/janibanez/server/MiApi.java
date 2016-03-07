@@ -179,7 +179,8 @@ public class MiApi {
             public void onResponse(Call call, Response response) throws IOException {
                 if (callback != null) {
                     if (response.isSuccessful()) {
-                        Db db = mGson.fromJson(response.body().string(), Db.class);
+                        String body = response.body().string();
+                        Db db = mGson.fromJson(body, Db.class);
                         callback.onResponse(db);
                     } else {
                         callback.onFailure(new Exception("Response is unsuccessful."));

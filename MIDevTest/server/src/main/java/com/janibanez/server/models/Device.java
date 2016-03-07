@@ -7,14 +7,14 @@ import java.io.Serializable;
  */
 public class Device extends ServerModel implements Serializable {
 
-    public int androidId, id;
-    public String carrier, imageUrl, name, snippet;
+    public int id;
+    public String androidId, carrier, imageUrl, name, snippet;
 
     public Device() {
 
     }
 
-    public Device(String name, int androidId, String snippet, String carrier, String imageUrl) {
+    public Device(String name, String androidId, String snippet, String carrier, String imageUrl) {
         this.name = name;
         this.androidId = androidId;
         this.snippet = snippet;
