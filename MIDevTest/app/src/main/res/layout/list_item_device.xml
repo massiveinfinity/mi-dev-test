@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_vertical_margin">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/progress"
+        android:layout_marginLeft="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mock"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+            android:id="@+id/snippet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:text="Mock"
+            android:ellipsize="end"
+            android:maxLines="2"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

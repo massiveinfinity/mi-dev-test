@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">database</string>
+    <string name="db_content_provider">com.janibanez.midevtest.db.provider.DBContentProvider</string>
+</resources>
